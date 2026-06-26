@@ -201,37 +201,23 @@ datamind_fixed/
 ### 🏠 Landing Page
 Halaman utama dengan branding, ringkasan fitur unggulan, serta informasi dosen pengampu dan kelompok.
 
-![Landing Page](Cuplikan layar 2026-06-26 144403.png)
-
 ### 🔐 Login & Guest Mode
 Autentikasi pengguna terdaftar atau akses cepat sebagai tamu, dengan keterangan jelas mengenai fitur yang terkunci pada mode tamu.
-
-![Login Page](docs/screenshots/02-login.png)
 
 ### 📊 Dashboard Analitik
 Pusat kendali yang menyajikan ringkasan metrik, kualitas data, dan matriks visualisasi komparatif dalam satu layar.
 
-![Dashboard](docs/screenshots/03-dashboard.png)
-
 ### 📤 Upload Dataset
 Antarmuka unggah data yang sederhana, dengan opsi langsung memuat sample dataset E-Commerce untuk demo.
-
-![Upload Data](docs/screenshots/04-upload.png)
 
 ### 💡 Interpretasi & AI Insight
 Insight otomatis dari statistik dataset, dilengkapi narasi analisis berbahasa natural yang dihasilkan AI.
 
-![AI Insight](docs/screenshots/05-insights.png)
-
 ### 📈 Visualisasi Mendalam
 Grafik interaktif lengkap dengan interpretasi otomatis tepat di bawah setiap visualisasi.
 
-![Visualisasi Numerik](docs/screenshots/06-visualization.png)
-
 ### 🖨️ Export Laporan
 Pratinjau laporan multi-halaman sebelum diekspor ke PDF, Excel, atau HTML.
-
-![Export Laporan](docs/screenshots/07-export.png)
 
 ---
 
