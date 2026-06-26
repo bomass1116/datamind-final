@@ -68,7 +68,7 @@ python app.py
 
 Buka browser dan akses: **http://localhost:5000**
 
-> ⚠️ **Catatan tampilan**: pada sebagian laptop dengan browser zoom 100%, sidebar bisa tampil tidak proporsional. Jika terjadi, atur **browser zoom ke 75–90%** untuk tampilan optimal. Bersifat *device-dependent* — tidak semua laptop mengalaminya.
+> ⚠️ **Catatan tampilan**: pada sebagian laptop dengan browser zoom 100%, sidebar bisa tampil tidak proporsional. Jika terjadi, atur **browser zoom ke 90–75%** untuk tampilan optimal. Bersifat *device-dependent* — tidak semua laptop mengalaminya.
 
 ---
 
