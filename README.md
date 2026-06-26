@@ -121,7 +121,7 @@ datamind_fixed/
 | Login / Logout | ✅ |
 | Mode Tamu (Guest Mode) | ✅ |
 | Session management | ✅ |
-| Profil pengguna (nama & foto avatar) | ✅ |
+| Profil pengguna  | ✅ |
 
 ### 📂 Manajemen Dataset
 
