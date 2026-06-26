@@ -201,7 +201,7 @@ datamind_fixed/
 ### 🏠 Landing Page
 Halaman utama dengan branding, ringkasan fitur unggulan, serta informasi dosen pengampu dan kelompok.
 
-![Landing Page](docs/screenshots/01-landing.png)
+![Landing Page](Cuplikan layar 2026-06-26 144403.png)
 
 ### 🔐 Login & Guest Mode
 Autentikasi pengguna terdaftar atau akses cepat sebagai tamu, dengan keterangan jelas mengenai fitur yang terkunci pada mode tamu.
