@@ -1,4 +1,5 @@
-# 📊 DataMind — Intelligent EDA Platform
+# DataMind 📊
+**Intelligent EDA Platform — Data Science Programming**
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.9+-3776AB?logo=python&logoColor=white" alt="Python Version">
@@ -8,94 +9,190 @@
   <img src="https://img.shields.io/badge/Status-Production-brightgreen.svg" alt="Status">
 </p>
 
-<p align="center">
-  <b>Ubah data mentah jadi keputusan cerdas — dalam hitungan detik.</b><br>
-  <a href="https://datamind-final.onrender.com"><b>🔗 Live Demo</b></a>
-</p>
+> Ujian Akhir Semester — Data Science Programming | ITSB
+> Kelompok 4 — Kelas B
+
+🔗 **Live Demo:** [datamind-final.onrender.com](https://datamind-final.onrender.com)
 
 ---
 
-## 📖 Tentang Proyek
+## 📖 Overview
 
-**DataMind** adalah platform analisis data eksploratif (*Exploratory Data Analysis*) berbasis web yang mengubah dataset mentah menjadi insight siap pakai secara otomatis. Cukup unggah file data, dan DataMind akan menjalankan statistik deskriptif, lebih dari 20 jenis visualisasi interaktif, analisis time series, deteksi masalah kualitas data, hingga narasi interpretasi yang ditenagai **Google Gemini AI** — semuanya dalam satu dashboard terintegrasi.
-
-Proyek ini dikembangkan sebagai Ujian Akhir Semester mata kuliah **Data Science Programming**, Program Studi Sains Data, Institut Teknologi Sains Bandung (ITSB).
-
-> 🇬🇧 **English summary**: DataMind is a web-based Exploratory Data Analysis (EDA) platform built with Flask. It automatically generates descriptive statistics, 20+ interactive visualizations, time series analysis, data-quality diagnostics, and AI-generated narrative insights (via Google Gemini) from any uploaded dataset, then exports the results as a professional multi-page PDF, Excel, or HTML report.
+**DataMind** adalah platform analisis data eksploratif (EDA) berbasis web yang mengubah dataset mentah menjadi insight siap pakai secara otomatis. Cukup unggah file data, dan DataMind akan menjalankan statistik deskriptif, lebih dari 20 jenis visualisasi interaktif, analisis time series, deteksi masalah kualitas data, hingga narasi interpretasi yang ditenagai **Google Gemini AI** — semuanya dalam satu dashboard terintegrasi.
 
 ---
 
-## ✨ Fitur Utama
+## 🚀 Quick Start
 
-### 🔐 Autentikasi & Manajemen Pengguna
+### 1. Persyaratan / Requirements
+
+- Python 3.9 atau lebih baru
+- pip (Python package manager)
+- API Key Google Gemini ([dapatkan di sini](https://aistudio.google.com/apikey)) — opsional, untuk fitur AI Insight
+
+### 2. Instalasi / Installation
+
+```bash
+# Clone atau extract project ini ke folder pilihan Anda
+# Buka terminal di VS Code: Terminal > New Terminal
+
+# Masuk ke folder project
+cd datamind_fixed
+
+# Buat virtual environment
+python -m venv venv
+
+# Aktifkan virtual environment
+# Windows:
+venv\Scripts\activate
+# macOS/Linux:
+source venv/bin/activate
+
+# Install semua dependencies
+pip install -r requirements.txt
+```
+
+Buat file `.env` di root folder untuk mengaktifkan AI Insight:
+
+```env
+GEMINI_API_KEY=your_api_key_here
+```
+
+> Jika `.env` tidak diisi, fitur AI Insight otomatis fallback ke insight berbasis rule Python.
+
+### 3. Jalankan Aplikasi / Run the App
+
+```bash
+python app.py
+```
+
+Buka browser dan akses: **http://localhost:5000**
+
+> ⚠️ **Catatan tampilan**: pada sebagian laptop dengan browser zoom 100%, sidebar bisa tampil tidak proporsional. Jika terjadi, atur **browser zoom ke 75–90%** untuk tampilan optimal. Bersifat *device-dependent* — tidak semua laptop mengalaminya.
+
+---
+
+## 📁 Struktur Project
+
+```text
+datamind_fixed/
+├── app.py                          ← Main Flask server (routes & API)
+├── requirements.txt                ← Python dependencies
+├── README.md                       ← Panduan ini
+├── .env                             ← API key Gemini (tidak disertakan di repo)
+│
+├── backend/
+│   ├── data_loader.py              ← Load Excel / CSV / TXT, deteksi encoding & separator
+│   ├── preprocessing.py            ← Deteksi tipe data kolom otomatis
+│   ├── descriptive_stats.py        ← Statistik numerik, uji normalitas, deteksi outlier
+│   ├── categorical_analysis.py     ← Statistik kategorikal, ordinal, boolean, datetime
+│   ├── visualization.py            ← 20+ chart generator (Plotly)
+│   ├── time_series.py              ← Deteksi & analisis time series otomatis
+│   ├── insight_generator.py        ← Integrasi Google Gemini + fallback rule-based
+│   └── export_report.py            ← Generator laporan PDF / Excel / HTML
+│
+├── frontend/
+│   ├── templates/
+│   │   └── dashboard.html          ← Landing, login/register, & dashboard (single-page)
+│   └── static/
+│       ├── css/style.css           ← Tampilan (dark/light mode, tema)
+│       └── js/script.js            ← Logika frontend + i18n bilingual
+│
+├── data/
+│   ├── raw/                        ← File dataset yang diunggah pengguna
+│   ├── raw_user/                   ← Dataset per akun pengguna
+│   ├── history/                    ← Riwayat analisis per pengguna
+│   └── users.json                  ← Penyimpanan akun (hashed password)
+│
+└── outputs/
+    ├── reports/                    ← Laporan PDF hasil ekspor
+    └── exported_files/             ← Hasil ekspor HTML/Excel
+```
+
+---
+
+## ✅ Fitur Lengkap
+
+### 🔐 Autentikasi
+
 | Fitur | Status |
 |---|---|
-| Registrasi & Login (password hashing SHA-256 + salt) | ✅ |
-| Mode Tamu (Guest Mode) untuk eksplorasi cepat | ✅ |
-| Profil pengguna & foto avatar | ✅ |
-| Riwayat analisis tersimpan per akun | ✅ |
+| Registrasi akun baru (password hashing SHA-256 + salt) | ✅ |
+| Login / Logout | ✅ |
+| Mode Tamu (Guest Mode) | ✅ |
+| Session management | ✅ |
+| Profil pengguna (nama & foto avatar) | ✅ |
+
+### 📂 Manajemen Dataset
+
+| Fitur | Status |
+|---|---|
+| Upload Excel (.xlsx / .xls) | ✅ |
+| Upload CSV (.csv) | ✅ |
+| Upload Text (.txt) | ✅ |
+| Deteksi otomatis encoding & separator | ✅ |
+| Sample dataset bawaan (E-Commerce) | ✅ |
+| Riwayat dataset per pengguna | ✅ |
 | Reuse dataset dari riwayat sebelumnya | ✅ |
+| Ekspor data ke CSV (cleaned) | ✅ |
 
-### 📤 Input & Manajemen Dataset
+### 📋 Pratinjau & Info Data
+
 | Fitur | Status |
 |---|---|
-| Upload `.csv`, `.xlsx`, `.xls`, `.txt` | ✅ |
-| Deteksi otomatis encoding & separator CSV | ✅ |
-| Sample dataset bawaan (E-Commerce) untuk demo instan | ✅ |
-| Auto-deteksi tipe data per kolom (numerik, kategorikal, datetime, boolean) | ✅ |
+| Auto deteksi tipe data kolom (numerik, kategorikal, datetime, boolean) | ✅ |
+| Data Preview (tabel interaktif) | ✅ |
+| Dataset Information (baris, kolom, missing cells) | ✅ |
+| Pencarian fitur/kolom dari navbar | ✅ |
 
 ### 📊 Statistik Deskriptif
+
 | Fitur | Status |
 |---|---|
-| Statistik numerik (mean, median, std dev, varians, skewness, kurtosis, CV) | ✅ |
-| Uji normalitas (Shapiro-Wilk) | ✅ |
-| Deteksi outlier (metode IQR) | ✅ |
-| Statistik kategorikal (nominal, ordinal, boolean, datetime) | ✅ |
-| Top-5 kategori, mode, & frekuensi | ✅ |
+| Statistik Numerik | ✅ |
+| Statistik Kategorikal | ✅ |
+| Data Quality Health Score | ✅ |
 
-### 📈 Visualisasi Interaktif (20+ Jenis)
-| Kategori | Grafik | Status |
-|---|---|---|
-| Univariate Numerik | Histogram, Boxplot, Density Plot, QQ-Plot, Violin Plot | ✅ |
-| Univariate Kategorikal | Bar Chart, Pie Chart, Count Plot, Pareto Chart | ✅ |
-| Multivariate / Bivariate | Scatter Plot, Correlation Heatmap, Regression Plot, Bubble Chart, Pair Plot Matrix | ✅ |
-| Kategorikal vs Numerik | Boxplot by Category, Violin by Category, Grouped Bar, Strip Plot | ✅ |
-| Time Series | Line Chart, Moving Average, Rolling Mean, Trend Line | ✅ |
+### 📈 Visualisasi (20+ Jenis)
 
-### 🧹 Data Quality & Cleaning
 | Fitur | Status |
 |---|---|
-| Data Quality Health Score (skor tertimbang otomatis) | ✅ |
+| Numerical Viz (Histogram, Boxplot, Density, QQ-Plot, Violin Plot) | ✅ |
+| Categorical Viz (Bar Chart, Pie Chart, Count Plot, Pareto Chart) | ✅ |
+| Multivariate / Bivariate (Scatter, Correlation Heatmap, Regression Plot, Bubble Chart, Pair Plot) | ✅ |
+| Categorical vs Numerical (Boxplot by Category, Grouped Bar, Strip Plot) | ✅ |
+| Time Series (Line Chart, Moving Average, Rolling Mean, Trend) | ✅ |
+
+### 🧹 Data Cleaning
+
+| Fitur | Status |
+|---|---|
 | Analisis missing values (heatmap, pola, & detail per baris) | ✅ |
 | Deteksi & penanganan duplikat | ✅ |
 | Deteksi & penanganan outlier (IQR) | ✅ |
 | Undo aksi cleaning | ✅ |
+| State cleaned dataset tersimpan di sesi | ✅ |
 
-### 💡 AI-Powered Insight
+### 💡 Insight & Ekspor
+
 | Fitur | Status |
 |---|---|
-| Narasi insight otomatis berbasis **Google Gemini API** | ✅ |
-| Fallback rule-based insight jika API tidak tersedia | ✅ |
-| Asisten chat AI interaktif dalam dashboard | ✅ |
-| Insight kualitas data, distribusi, korelasi, & rekomendasi tindakan | ✅ |
+| AI Insight otomatis (Google Gemini API) | ✅ |
+| Fallback rule-based insight | ✅ |
+| Chat dengan AI Assistant interaktif | ✅ |
+| Ekspor laporan PDF multi-halaman (custom page selection) | ✅ |
+| Ekspor Excel multi-sheet | ✅ |
+| Ekspor HTML dashboard interaktif | ✅ |
+| Fitur download terkunci untuk Guest Mode | ✅ |
 
-### 🖨️ Export & Reporting
+### 🌐 UI / UX
+
 | Fitur | Status |
 |---|---|
-| Laporan PDF profesional multi-halaman (custom page selection) | ✅ |
-| Export Excel multi-sheet | ✅ |
-| Export HTML dashboard interaktif | ✅ |
-| Export Cleaned CSV | ✅ |
-| Fitur download terkunci untuk Guest Mode (mendorong registrasi) | ✅ |
-
-### 🌐 UI/UX
-| Fitur | Status |
-|---|---|
-| Dark Mode / Light Mode | ✅ |
-| Bilingual — Bahasa Indonesia & English (i18n) | ✅ |
-| Sidebar navigasi dengan pengelompokan section | ✅ |
-| Pencarian fitur/kolom langsung dari navbar | ✅ |
-| Responsive layout | ✅ |
+| Dark / Light Mode | ✅ |
+| Bahasa Indonesia / English (i18n) | ✅ |
+| Responsive UI | ✅ |
+| Sidebar navigasi dengan section label | ✅ |
 
 ---
 
@@ -138,23 +235,19 @@ Pratinjau laporan multi-halaman sebelum diekspor ke PDF, Excel, atau HTML.
 
 ---
 
-## 🚀 Live Demo
+## 📊 Statistik yang Dihitung
 
-🔗 **[https://datamind-final.onrender.com](https://datamind-final.onrender.com)**
+### Numerik
+Mean, Median, Std Dev, Variance, Skewness, Kurtosis, Coefficient of Variation,
+Missing Count & %, Uji Distribusi Normal (Shapiro-Wilk), Outlier Count (IQR)
 
-> ⚠️ Catatan: deployment menggunakan free tier Render, sehingga server dapat mengalami *cold start* (membutuhkan beberapa detik di akses pertama setelah idle).
-
----
-
-## ⚠️ Catatan Tampilan (Known Issue)
-
-Pada sebagian laptop dengan resolusi/skala layar tertentu (umumnya browser zoom **100%**), elemen sidebar berpotensi tampil tidak proporsional. Jika hal ini terjadi, disarankan mengatur **browser zoom ke kisaran 75–90%** untuk tampilan optimal.
-
-Perilaku ini bersifat *device-dependent* — tidak semua perangkat mengalaminya, dan beberapa laptop tetap menampilkan layout dengan normal pada zoom 100%. Penyesuaian responsif lebih lanjut direncanakan pada update berikutnya.
+### Kategorik
+Unique Categories, Mode, Mode Frequency & %, Missing Count & %, Top 5 Categories,
+dukungan tipe Nominal, Ordinal, Boolean, dan Datetime
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Technology Stack
 
 | Layer | Teknologi |
 |---|---|
@@ -170,91 +263,6 @@ Perilaku ini bersifat *device-dependent* — tidak semua perangkat mengalaminya,
 
 ---
 
-## 📂 Struktur Proyek
-
-```text
-datamind_fixed/
-├── app.py                          # Entry point Flask — routing & API utama
-├── requirements.txt                # Daftar dependensi Python
-├── .env                            # API key Gemini (tidak disertakan di repo)
-│
-├── backend/
-│   ├── data_loader.py              # Load CSV/Excel/TXT, deteksi encoding & separator
-│   ├── preprocessing.py            # Deteksi tipe data kolom otomatis
-│   ├── descriptive_stats.py        # Statistik numerik, uji normalitas, deteksi outlier
-│   ├── categorical_analysis.py     # Statistik kategorikal, ordinal, boolean, datetime
-│   ├── visualization.py            # 20+ chart generator berbasis Plotly
-│   ├── time_series.py              # Deteksi & analisis time series otomatis
-│   ├── insight_generator.py        # Integrasi Google Gemini + fallback rule-based
-│   └── export_report.py            # Generator laporan PDF / Excel / HTML
-│
-├── frontend/
-│   ├── templates/
-│   │   └── dashboard.html          # Single-page dashboard (landing, auth, & app)
-│   └── static/
-│       ├── css/style.css           # Tema dark/light & layout responsif
-│       └── js/script.js            # Logika frontend, i18n, dan interaktivitas
-│
-├── data/
-│   ├── raw/                        # Dataset mentah dari pengguna
-│   ├── raw_user/                   # Dataset per akun pengguna
-│   ├── history/                    # Riwayat analisis per pengguna
-│   └── users.json                  # Penyimpanan akun (hashed password)
-│
-└── outputs/
-    ├── reports/                    # Laporan PDF hasil ekspor
-    └── exported_files/             # Hasil ekspor HTML/Excel
-```
-
----
-
-## ⚙️ Instalasi & Menjalankan Secara Lokal
-
-### 1. Persyaratan
-
-- Python 3.9 atau lebih baru
-- pip (Python package manager)
-- API Key Google Gemini ([dapatkan di sini](https://aistudio.google.com/apikey)) — opsional, untuk fitur AI Insight
-
-### 2. Clone & Setup
-
-```bash
-# Masuk ke folder project
-cd datamind_fixed
-
-# Buat virtual environment
-python -m venv venv
-
-# Aktifkan virtual environment
-# Windows:
-venv\Scripts\activate
-# macOS/Linux:
-source venv/bin/activate
-
-# Install seluruh dependencies
-pip install -r requirements.txt
-```
-
-### 3. Konfigurasi Environment
-
-Buat file `.env` di root folder, isi dengan API key Gemini kamu:
-
-```env
-GEMINI_API_KEY=your_api_key_here
-```
-
-> Jika `.env` tidak diisi, fitur AI Insight akan otomatis fallback ke insight berbasis rule Python.
-
-### 4. Jalankan Aplikasi
-
-```bash
-python app.py
-```
-
-Buka browser dan akses: **http://localhost:5000**
-
----
-
 ## 🔌 API Endpoints
 
 | Method | Endpoint | Fungsi |
@@ -262,7 +270,6 @@ Buka browser dan akses: **http://localhost:5000**
 | POST | `/api/register` | Registrasi akun baru |
 | POST | `/api/login` | Login pengguna |
 | POST | `/api/logout` | Logout pengguna |
-| GET | `/` | Halaman utama (landing/dashboard) |
 | POST | `/upload` | Upload dataset |
 | POST | `/load_sample` | Muat sample dataset E-Commerce |
 | GET | `/api/overview` | Ringkasan metrik dataset |
@@ -277,21 +284,21 @@ Buka browser dan akses: **http://localhost:5000**
 | POST | `/api/insight` | Generate AI insight |
 | POST | `/api/chat` | Chat dengan AI Assistant |
 | POST | `/api/undo` | Undo aksi cleaning |
-| GET | `/api/missing_overview` \| `/api/missing_info` \| `/api/missing_heatmap` \| `/api/missing_rows` \| `/api/missing_pattern_rows` | Analisis missing values |
+| GET | `/api/missing_overview`, `/api/missing_info`, `/api/missing_heatmap` | Analisis missing values |
 | POST | `/api/handle_missing` | Tangani missing values |
 | GET | `/api/duplicate_info` | Info data duplikat |
 | POST | `/api/handle_duplicate` | Tangani duplikat |
-| GET | `/api/outlier_info` \| `/api/outlier_rows` | Deteksi outlier |
+| GET | `/api/outlier_info`, `/api/outlier_rows` | Deteksi outlier |
 | POST | `/api/handle_outlier` | Tangani outlier |
 | GET | `/api/dq_health_score` | Skor kesehatan data |
-| GET | `/export/cleaned_csv` | Export CSV bersih |
-| GET | `/export/pdf` | Export laporan PDF |
-| POST | `/export/pdf_custom` | Export PDF dengan halaman custom |
-| GET | `/export/excel` | Export Excel |
-| GET | `/export/html` \| POST `/export/html_custom` | Export HTML dashboard |
+| GET | `/export/cleaned_csv` | Ekspor CSV bersih |
+| GET | `/export/pdf` | Ekspor laporan PDF |
+| POST | `/export/pdf_custom` | Ekspor PDF dengan halaman custom |
+| GET | `/export/excel` | Ekspor Excel |
+| GET/POST | `/export/html`, `/export/html_custom` | Ekspor HTML dashboard |
 | GET/POST | `/api/user/profile` | Profil pengguna |
-| GET | `/api/user/history` | Riwayat analisis |
-| POST | `/api/user/history/<entry_id>/reload` | Muat ulang dataset dari riwayat |
+| GET | `/api/user/history` | Riwayat dataset |
+| POST | `/api/user/history/<entry_id>/reload` | Gunakan ulang dataset dari riwayat |
 | POST | `/api/user/avatar` | Upload foto profil |
 
 ---
@@ -300,16 +307,16 @@ Buka browser dan akses: **http://localhost:5000**
 
 | Package | Fungsi |
 |---|---|
-| `flask` | Web framework |
-| `pandas` | Manipulasi & analisis data |
-| `numpy` | Komputasi numerik |
-| `scipy` | Statistik (uji normalitas Shapiro-Wilk, dsb.) |
-| `plotly` | Visualisasi data interaktif |
-| `openpyxl` | Baca/tulis file Excel |
-| `reportlab` | Generator laporan PDF |
-| `google-genai` | Integrasi AI Insight (Google Gemini) |
-| `python-dotenv` | Manajemen environment variable |
-| `chardet` | Deteksi encoding file otomatis |
+| Flask | Web framework |
+| Pandas | Manipulasi data |
+| NumPy | Komputasi numerik |
+| SciPy | Statistik (Shapiro-Wilk, dsb.) |
+| Plotly | Visualisasi data interaktif |
+| openpyxl | Baca/tulis Excel (.xlsx) |
+| reportlab | Generator laporan PDF |
+| google-genai | Integrasi AI Insight (Google Gemini) |
+| python-dotenv | Manajemen environment variable |
+| chardet | Deteksi encoding file otomatis |
 
 ---
 
@@ -317,46 +324,46 @@ Buka browser dan akses: **http://localhost:5000**
 
 **Port sudah dipakai?**
 ```bash
-# Ganti port di baris terakhir app.py
+# Ganti port di baris terakhir app.py:
 app.run(port=5001, debug=True)
 ```
 
-**Error saat install dependencies?**
+**Error install dependencies?**
 ```bash
 pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-**File CSV tidak terbaca dengan benar?**
-Pastikan encoding UTF-8. Jika ada karakter khusus, simpan ulang sebagai *CSV UTF-8* dari Excel — DataMind tetap memiliki deteksi encoding otomatis sebagai fallback.
+**File CSV tidak terbaca?**
+Pastikan encoding UTF-8. Jika ada karakter khusus, simpan ulang di Excel sebagai *CSV UTF-8* — DataMind juga punya deteksi encoding otomatis sebagai fallback.
+
+**Halaman tidak terupdate setelah perubahan JS/CSS?**
+Lakukan hard refresh di browser: `Ctrl + Shift + R` (Windows/Linux) atau `Cmd + Shift + R` (Mac).
 
 **Sidebar tampil tidak proporsional?**
-Lihat bagian [Catatan Tampilan](#️-catatan-tampilan-known-issue) di atas — atur browser zoom ke 75–90%.
+Atur browser zoom ke 75–90%. Lihat catatan di bagian [Quick Start](#-quick-start).
 
 **Fitur AI Insight tidak merespons?**
-Periksa apakah `GEMINI_API_KEY` sudah diisi dengan benar di file `.env`. Jika kuota API habis atau key tidak valid, sistem akan otomatis fallback ke insight berbasis rule.
+Periksa `GEMINI_API_KEY` di file `.env`. Jika kuota habis/key tidak valid, sistem otomatis fallback ke insight rule-based.
 
 **Fitur Download terkunci?**
-Fitur export PDF/Excel/HTML memang dibatasi untuk pengguna **Guest**. Login atau buat akun gratis untuk membukanya.
+Export PDF/Excel/HTML dibatasi untuk pengguna **Guest**. Login atau buat akun gratis untuk membukanya.
 
 ---
 
-## 👥 Tim Pengembang — Kelompok 4 · Kelas B
+## 👥 Kelompok 4 — Kelas B
 
-| No | Nama | NIM | Peran |
-|---|---|---|---|
-| 1 | Den Yuan Frasseka | 52250050 | Project Lead & Koordinator Analisis Data |
-| 2 | Boma Satrio Wicaksono D. | 52250061 | Backend Development & Data Pipeline |
-| 3 | Frizzy Litmensyah | 52250062 | EDA & Pembuatan Visualisasi Grafik |
-| 4 | Angelica Florentina M. | 52250063 | UI/UX Design Dashboard & Frontend |
-| 5 | Adam Richie Wijaya | 52250064 | Statistical Analysis & Insight Generator |
-| 6 | Andre | 52250065 | Data Cleaning, Preprocessing & Validasi |
+| No | Nama | NIM |
+|---|---|---|
+| 1 | Den Yuan Frasseka | 52250050 |
+| 2 | Boma Satrio Wicaksono D. | 52250061 |
+| 3 | Frizzy Litmensyah | 52250062 |
+| 4 | Angelica Florentina M. | 52250063 |
+| 5 | Adam Richie Wijaya | 52250064 |
+| 6 | Andre | 52250065 |
 
 **Dosen Pengampu:** Bakti Siregar, M.Sc., CDS
 
 ---
 
-<p align="center">
-  <i>Institut Teknologi Sains Bandung (ITSB) — Program Studi Sains Data</i><br>
-  <i>Mata Kuliah Data Science Programming · 2026</i>
-</p>
+*Institut Teknologi Sains Bandung (ITSB) — Data Science Programming*
