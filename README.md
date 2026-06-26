@@ -1,5 +1,5 @@
 # DataMind 📊
-**Intelligent EDA Platform — Data Science Programming**
+**Intelligent EDA Platform**
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.9+-3776AB?logo=python&logoColor=white" alt="Python Version">
@@ -9,10 +9,10 @@
   <img src="https://img.shields.io/badge/Status-Production-brightgreen.svg" alt="Status">
 </p>
 
-> Ujian Akhir Semester — Data Science Programming | ITSB
+> Ujian Akhir Semester — Pemrograman Sains Data I | ITSB
 > Kelompok 4 — Kelas B
 
-🔗 **Live Demo:** [datamind-final.onrender.com](https://datamind-final.onrender.com)
+🔗 **Live Demo:** [s.id/datamind-autoeda](https://s.id/datamind-autoeda)
 
 ---
 
@@ -196,31 +196,6 @@ datamind_fixed/
 
 ---
 
-## 📸 Tampilan Aplikasi
-
-### 🏠 Landing Page
-Halaman utama dengan branding, ringkasan fitur unggulan, serta informasi dosen pengampu dan kelompok.
-
-### 🔐 Login & Guest Mode
-Autentikasi pengguna terdaftar atau akses cepat sebagai tamu, dengan keterangan jelas mengenai fitur yang terkunci pada mode tamu.
-
-### 📊 Dashboard Analitik
-Pusat kendali yang menyajikan ringkasan metrik, kualitas data, dan matriks visualisasi komparatif dalam satu layar.
-
-### 📤 Upload Dataset
-Antarmuka unggah data yang sederhana, dengan opsi langsung memuat sample dataset E-Commerce untuk demo.
-
-### 💡 Interpretasi & AI Insight
-Insight otomatis dari statistik dataset, dilengkapi narasi analisis berbahasa natural yang dihasilkan AI.
-
-### 📈 Visualisasi Mendalam
-Grafik interaktif lengkap dengan interpretasi otomatis tepat di bawah setiap visualisasi.
-
-### 🖨️ Export Laporan
-Pratinjau laporan multi-halaman sebelum diekspor ke PDF, Excel, atau HTML.
-
----
-
 ## 📊 Statistik yang Dihitung
 
 ### Numerik
@@ -352,4 +327,4 @@ Export PDF/Excel/HTML dibatasi untuk pengguna **Guest**. Login atau buat akun gr
 
 ---
 
-*Institut Teknologi Sains Bandung (ITSB) — Data Science Programming*
+*Institut Teknologi Sains Bandung (ITSB)*
